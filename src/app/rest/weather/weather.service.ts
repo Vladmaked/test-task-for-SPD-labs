@@ -9,7 +9,7 @@ import { DailyWeatherByGeographicCoordinates } from './models/daily.weather.by.g
 
 import { environment } from '../../../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class WeatherService {
 
   constructor(private http: HttpClient) {}
