@@ -1,0 +1,36 @@
+.weather-card {
+  border: 1px solid #4b8bc7;
+  border-radius: 5px;
+}
+
+.header {
+  border-radius: 5px 5px 0 0;
+  background-color: #4b8bc7;
+  color: #fff;
+  padding: .7rem 1rem;
+}
+
+.body {
+  padding: .7rem 1rem;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.footer {
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid #dfdfdf;
+  background-color: #f5f5f5;
+  padding: .7rem 1rem;
+  overflow-wrap: anywhere;
+}
+
+.description-item {
+  margin-right: 10px;
+  color: rgba(0, 0, 0, .8);
+  white-space: nowrap;
+  line-height: 1.2rem;
+}

@@ -1,11 +1,11 @@
 export class Temp {
 
-  day?: number;
-  eve?: number;
-  max?: number;
-  min?: number;
-  morn?: number;
-  night?: number;
+  day!: number;
+  eve!: number;
+  max!: number;
+  min!: number;
+  morn!: number;
+  night!: number;
 
   constructor(data?: Temp) {
     if (data) {

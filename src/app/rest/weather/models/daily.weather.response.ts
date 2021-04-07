@@ -1,14 +1,14 @@
 import { Daily } from './daily';
 
-export class DailyWeatherByGeographicCoordinates {
+export class DailyWeatherResponse {
 
   daily: Daily[] = [];
-  lat?: number;
-  lon?: number;
-  timezone?: string;
-  timezone_offset?: number;
+  lat!: number;
+  lon!: number;
+  timezone!: string;
+  timezone_offset!: number;
 
-  constructor(data?: DailyWeatherByGeographicCoordinates) {
+  constructor(data?: DailyWeatherResponse) {
     if (data) {
       this.daily = data.daily;
       this.lat = data.lat;

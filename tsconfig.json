@@ -16,6 +16,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "paths": {
+      "@components/*": ["src/app/components/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@rest/*": ["src/app/rest/*"],
+      "@pipes/*": ["src/app/pipes/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@portal/*": ["src/app/portal/*"],
+      "@landing/*": ["src/app/landing/*"],
+      "@enums/*": ["src/app/enums/*"],
+      "@containers/*": ["src/app/containers/*"],
+      "@config/*": ["src/environments/*"]
+    },
     "lib": [
       "es2018",
       "dom"

@@ -1,9 +1,9 @@
 export class Weather {
 
-  description?: string;
-  icon?: string;
-  id?: number;
-  main?: string;
+  description!: string;
+  icon!: string;
+  id!: number;
+  main!: string;
 
   constructor(data?: Weather) {
     if (data) {

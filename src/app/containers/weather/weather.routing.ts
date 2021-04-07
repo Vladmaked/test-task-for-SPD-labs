@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { WeatherComponent } from '@containers/weather/weather.component';
+
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('@containers/weather/weather.module').then(m => m.WeatherModule)
+    component: WeatherComponent
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
-export class AppRouting {}
+export class WeatherRouting {}

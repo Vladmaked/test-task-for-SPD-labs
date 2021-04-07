@@ -1,0 +1,30 @@
+<div
+  *ngIf="dailyWeatherItem"
+  class="weather-card">
+  <div
+    class="header">
+    {{dailyWeatherItem.dt * 1000 | date: 'fullDate'}}
+  </div>
+  <div class="body">
+    <div class="weather-main">
+      <span class="description-item">
+        <img
+          src="https://openweathermap.org/img/w/{{dailyWeatherItem.weather[0].icon}}.png"
+          alt="weather-icon">
+      </span>
+      <span class="description-item">{{dailyWeatherItem.temp.day}}</span>
+      <span class="description-item">{{dailyWeatherItem.weather[0].main}}</span>
+    </div>
+    <p>
+      <span class="description-item">{{dailyWeatherItem.weather[0].description}} ~</span>
+      <span class="description-item">High: {{dailyWeatherItem.temp.max}}&#176;C ~</span>
+      <span class="description-item">Low: {{dailyWeatherItem.temp.min}}&#176;C</span>
+    </p>
+  </div>
+  <div class="footer">
+    <span class="description-item">Day: {{ dailyWeatherItem.temp.day }}&#176;C ~</span>
+    <span class="description-item">Night: {{ dailyWeatherItem.temp.night }}&#176;C ~</span>
+    <span class="description-item">Pressure: {{ dailyWeatherItem.pressure }}hPa ~</span>
+    <span class="description-item">Humidity: {{ dailyWeatherItem.humidity }}%</span>
+  </div>
+</div>

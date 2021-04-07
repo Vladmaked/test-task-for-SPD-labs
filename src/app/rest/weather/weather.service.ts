@@ -4,37 +4,36 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { CurrentWeatherResponse } from './models/current.weather.response';
-import { DailyWeatherByGeographicCoordinates } from './models/daily.weather.by.geographic.coordinates';
+import { environment } from '@config/environment';
+import { CityCoordsResponse } from '@rest/weather/models/city.coords.response';
+import { Coord } from '@rest/weather/models/coord';
 
-import { environment } from '../../../environments/environment';
+import { DailyWeatherResponse } from './models/daily.weather.response';
+
 
 @Injectable()
 export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  initCurrentWeatherByCity(city: string): Observable<CurrentWeatherResponse> {
-    const weatherUrl = `${environment.api}weather?q=${city}&appid=${environment.apiId}&units=metric`;
-    return this.http
-               .jsonp<CurrentWeatherResponse>(weatherUrl, 'callback')
+  getCityCoords(city: string): Observable<CityCoordsResponse[]> {
+    const url = `${environment.api}geo/1.0/direct?q=${city}&limit=1&appid=${environment.apiId}`;
+    return this.http.get<CityCoordsResponse[]>(url)
                .pipe(
                  catchError(WeatherService.handleError.bind(this))
                );
   }
 
-  initDailyWeatherByGeographicCoordinates(lat: string, lon: string): Observable<DailyWeatherByGeographicCoordinates> {
-    const weatherUrl = `${environment.api}onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${environment.apiId}&units=metric`;
+  getDailyWeatherByCoords(coord: Coord): Observable<DailyWeatherResponse> {
+    const url = `${environment.api}data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=current,minutely,hourly,alerts&appid=${environment.apiId}&units=metric`;
     return this.http
-               .jsonp<DailyWeatherByGeographicCoordinates>(weatherUrl, 'callback')
+               .get<DailyWeatherResponse>(url)
                .pipe(
                  catchError(WeatherService.handleError.bind(this))
                );
   }
 
   private static handleError(error: HttpErrorResponse): Observable<never> {
-    const { message } = error.error.error;
-    console.log(message);
     return throwError(error);
   }
 }

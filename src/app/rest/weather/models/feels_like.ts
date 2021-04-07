@@ -1,9 +1,9 @@
 export class Feels_like {
 
-  day?: number;
-  night?: number;
-  eve?: number;
-  morn?: number;
+  day!: number;
+  night!: number;
+  eve!: number;
+  morn!: number;
 
   constructor(data?: Feels_like) {
     if (data) {

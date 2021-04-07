@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="header">
+    <ul class="btn-group">
+      <li
+        *ngFor="let searchStoreItem of searchStorage"
+        class="btn-group-item-wrapper">
+        <button
+          class="btn-group-item"
+          (click)="initWeather(searchStoreItem)">
+          {{searchStoreItem}}
+        </button>
+      </li>
+    </ul>
+    <div class="search">
+      <form
+        (ngSubmit)="initWeather(this.searchField)">
+        <input
+          #searchInput="ngModel"
+          class="search-input"
+          type="search"
+          placeholder="City"
+          name="searchInput"
+          required
+          minlength="2"
+          [(ngModel)]="searchField">
+        <button
+          class="btn search-btn"
+          type="submit"
+          [disabled]="disableBtn || searchInput.invalid">
+          Search!
+        </button>
+      </form>
+    </div>
+  </div>
+  <ng-container>
+    <div class="weather-title">
+      {{ cityCoors.name }},
+      <ng-container *ngFor="let itemNamesCountries of countriesNames | keyvalue">
+        <ng-container *ngIf="itemNamesCountries.key === cityCoors.country">
+          {{ itemNamesCountries.value | uppercase }}
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="!checkCountryCode()">
+        {{ cityCoors.country }}
+      </ng-container>
+      <span class="weather-coords">
+        Lon: {{ cityCoors.lon | number: '2.1-2' }}
+      </span>
+      <span class="weather-coords">
+        Lat: {{ cityCoors.lat | number: '2.1-2' }}
+      </span>
+    </div>
+  </ng-container>
+  <div class="weather-today">
+    <cwi-weather-item-day [dailyWeatherItem]="dailyWeather.daily[0]"></cwi-weather-item-day>
+  </div>
+  <div class="weather-forecast-wrapper">
+    <div class="weather-forecast">
+      <ng-container *ngFor="let dailyWeatherItem of dailyWeather.daily; let first = first">
+        <cwi-weather-item-day
+          *ngIf="!first"
+          [dailyWeatherItem]="dailyWeatherItem">
+        </cwi-weather-item-day>
+      </ng-container>
+    </div>
+  </div>
+</div>
