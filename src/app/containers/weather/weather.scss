@@ -5,7 +5,7 @@
 }
 
 .container {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   font-family: "Fira Code Retina", sans-serif;
   font-size: 14px;
@@ -15,52 +15,65 @@
 .header {
   margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .btn-group {
-  margin-right: 5px;
   display: flex;
   list-style: none;
-}
+  margin-bottom: 5px;
 
-.btn-group-item-wrapper:first-child .btn-group-item {
-  border-radius: 5px 0 0 5px;
-  border-left: 1px solid #dfdfdf;
-}
+  &-item-wrapper:first-child .btn-group-item {
+    border-radius: 5px 0 0 5px;
+    border-left: 1px solid #dfdfdf;
+  }
 
-.btn-group-item-wrapper:last-child .btn-group-item {
-  border-radius: 0 5px 5px 0;
-}
+  &-item-wrapper:last-child .btn-group-item {
+    border-radius: 0 5px 5px 0;
+  }
 
-.btn-group-item-wrapper:first-child:last-child .btn-group-item {
-  border-radius: 5px;
-}
+  &-item-wrapper:first-child:last-child .btn-group-item {
+    border-radius: 5px;
+  }
 
-.btn-group-item {
-  cursor: pointer;
-  padding: .5rem 1rem;
-  background-color: inherit;
-  border: 1px solid #dfdfdf;
-  border-left: none;
+  &-item {
+    cursor: pointer;
+    padding: .5rem 1rem;
+    background-color: inherit;
+    border: 1px solid #dfdfdf;
+    border-left: none;
 
-  &:hover, &:active, &:focus {
-    outline-color: #dfdfdf;
+    &:hover, &:active, &:focus {
+      outline-color: #dfdfdf;
+    }
   }
 }
 
 .search {
   margin-bottom: 20px;
-}
+  margin-left: 5px;
 
-.search-input {
-  border: 1px solid #dfdfdf;
-  border-radius: 5px;
-  padding: .5rem 1rem;
-  margin-right: 5px;
+  &-input {
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    margin-right: 5px;
 
-  &:focus, &:active {
-    outline-color: #dfdfdf;
+    &:focus, &:active {
+      outline-color: #dfdfdf;
+    }
+  }
+
+  &-btn {
+    border: 1px solid #4b8bc7;
+    color: #fff;
+    background-color: #4b8bc7;
+
+    &:hover, &:active, &:focus {
+      outline-color: #3071a8;
+      background-color: rgba(75, 139, 199, .9);
+    }
   }
 }
 
@@ -73,38 +86,100 @@
   }
 }
 
-.search-btn {
-  border: 1px solid #4b8bc7;
-  color: #fff;
-  background-color: #4b8bc7;
 
-  &:hover, &:active, &:focus {
-    outline-color: #3071a8;
-    background-color: rgba(75, 139, 199, .9);
+.weather {
+  &-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  &-coords {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &-today {
+    margin-bottom: 20px;
+  }
+
+  &-forecast-wrapper {
+    overflow-wrap: anywhere;
+  }
+
+  &-forecast {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 10px 25px;
   }
 }
 
-.weather-title {
-  font-size: 18px;
-  margin-bottom: 10px;
+@media (max-width: 1440px) {
+  .container {
+    width: 90%;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .btn-group {
+    margin-right: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+
+    &item-wrapper:first-child .btn-group-item {
+      border-radius: 5px;
+    }
+
+    &item-wrapper:last-child .btn-group-item {
+      border-radius: 5px;
+    }
+
+    &item-wrapper:first-child:last-child .btn-group-item {
+      border-radius: 5px;
+    }
+
+    &-item {
+      border: 1px solid #dfdfdf;
+      margin: 3px;
+      border-radius: 5px;
+    }
+  }
 }
 
-.weather-coords {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
 }
 
-.weather-today {
-  margin-bottom: 20px;
-}
+@media (max-width: 425px) {
+  .container {
+    padding: 15px;
+  }
 
-.weather-forecast-wrapper {
-  overflow-wrap: anywhere;
-}
+  .weather-title {
+    font-size: 14px;
+  }
 
-.weather-forecast {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: 10px 25px;
+  .weather-forecast {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search {
+    width: 100%;
+
+    &-input {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
 }
