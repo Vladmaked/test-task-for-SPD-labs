@@ -130,15 +130,15 @@
     justify-content: flex-end;
     margin-bottom: 5px;
 
-    &item-wrapper:first-child .btn-group-item {
+    &-item-wrapper:first-child .btn-group-item {
       border-radius: 5px;
     }
 
-    &item-wrapper:last-child .btn-group-item {
+    &-item-wrapper:last-child .btn-group-item {
       border-radius: 5px;
     }
 
-    &item-wrapper:first-child:last-child .btn-group-item {
+    &-item-wrapper:first-child:last-child .btn-group-item {
       border-radius: 5px;
     }
 
